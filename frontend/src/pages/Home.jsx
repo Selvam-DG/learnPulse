@@ -33,7 +33,7 @@ export default function Home() {
                             className="rounded-lg border border-slate-200 dark:border-slate-700 p-4 hover:shadow-sm"
                         >
                             <div className="text-lg font-semibold">{topic.name}</div>
-                            <div className="text-sm text-slate-500">{topic.levels?.join(".")}</div>
+                            <div className="text-sm text-slate-500">{topic.levels?.join(" • ")}</div>
                         </Link>
                     ))}
                 </div>

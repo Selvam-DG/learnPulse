@@ -10,9 +10,9 @@ export default function App() {
   const [dark, setDark] = UseDarkMode();
   console.log(dark);
   return (
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-red-900 dark:text-slate-100">
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100">
       <Navbar dark={dark} setDark={setDark} />
-      <main className="min-h-screen mx-auto max-w-6l px-4 py-8">
+      <main className="min-h-screen mx-auto max-w-6xl px-4 py-8">
         <Routes>
           <Route path="/" element={ < Home/>} />
           <Route path="/learn/:topicSlug" element={ < Learn/>} />

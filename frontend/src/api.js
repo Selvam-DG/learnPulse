@@ -11,11 +11,13 @@ export async function fetchLessonsBy(slug, level) {
     if(level) url.searchParams.set('level', level);
     const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to load lessons');
-    return res.json();
+    const data  = await res.json()
+
+    return Array.isArray(data) ? data : (data.items ?? []);
 }
 
 export async function fetchLesson(slug) {
-    const response = await fetch(`${BASEURI}/api/lesssons/${slug}`);
+    const response = await fetch(`${BASEURI}/api/lessons/${slug}`);
     if (!response.ok) throw new Error('Lesson Not Found');
     return response.json();
     

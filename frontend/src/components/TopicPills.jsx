@@ -8,8 +8,8 @@ export default function TopicPills( {topics}) {
             {topics.map( topic =>(
                 <Link
                 key = {topic.slug} to={`/learn/${topic.slug}`}
-                className={"px-3 py-1 rounded-full border text-sm" +
-                    (topic.slug === topicSlug ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900" :"border-slate-300 dark:border-slate-600")
+                className={"px-3 py-1  rounded-full border text-sm" +
+                    (topic.slug === topicSlug ? " text-white bg-blue-500 dark:bg-white dark:text-slate-900" :"  border-slate-300 dark:border-slate-600")
                 }
                 >
                 {topic.name}</Link>
