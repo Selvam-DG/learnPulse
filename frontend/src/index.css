@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@tailwindcss base;
+@tailwindcss components;
+@tailwindcss utilities;
+
+/* prims.js basic theme override */
+code[class*="language-"], pre[class*="language-"]{
+    font-size : 0.9rem;
+}

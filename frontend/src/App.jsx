@@ -1,44 +1,26 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Route, Routes, NavLink } from "react-router-dom";
+import Home from './pages/Home';
+import Learn from './pages/Learn';
+import Suggest from './pages/Suggest';
+import UseDarkMode from "./hooks/UseDarkMode";
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-function App() {
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://127.0.0.1:5000/api/topics")
-      .then((response) => {
-        setTopics(response.data);
-        console.log("Fetched topics:", response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+export default function App() {
+  const [dark, setDark] = UseDarkMode();
+  console.log(dark);
   return (
-    <div className="p-6">
-      <h1 className="text-3xl text-blue-600 mb-4">Hello World</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {topics.map((topic, index) => (
-          <div key={index} className="bg-white p-4 shadow rounded">
-            <h2 className="text-xl font-bold">{topic.title}</h2>
-            <p className="text-gray-700">{topic.content}</p>
-
-            <div className="mt-2">
-              {topic.code_snippets?.map((snippet, i) => (
-                <pre
-                  key={i}
-                  className="bg-gray-100 p-2 rounded text-sm overflow-x-auto"
-                >
-                  {snippet}
-                </pre>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="min-h-screen bg-white text-slate-900 dark:bg-red-900 dark:text-slate-100">
+      <Navbar dark={dark} setDark={setDark} />
+      <main className="min-h-screen mx-auto max-w-6l px-4 py-8">
+        <Routes>
+          <Route path="/" element={ < Home/>} />
+          <Route path="/learn/:topicSlug" element={ < Learn/>} />
+          <Route path="/suggest" element={ < Suggest/>} />
+          <Route path="*" element={ <div >Not Found</div>} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
-  );
-}
-
-export default App;
+  )
+};
