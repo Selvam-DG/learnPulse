@@ -13,7 +13,7 @@ export default function Navbar({dark, setDark}) {
                      className="rounded px-3 py-1 border border-slate-300 dark:border-slate-600 text-sm"
                      aria-label="Toggle dark mode"
                         >
-                        {dark? 'Light' :'Dark'}
+                        {dark? 'Light_Mode' :'Dark_Mode'}
                     </button>
 
                 </nav>
