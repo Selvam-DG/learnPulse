@@ -7,7 +7,7 @@ WORKDIR /app
 
 #system deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essentials ca-certificates && rm -rf /var/lib/apt/lists/*
+    build-essential ca-certificates && rm -rf /var/lib/apt/lists/*
 
 
 COPY requirements.txt .
