@@ -18,7 +18,7 @@ def create_app():
     CORS(app, resources = {r"/api/*" : {"origins":origins}})
 
     #Rate Limiting
-    limiter = Limiter(get_remote_address, app=app, default_limits=["200 per hour"])
+    # limiter = Limiter(get_remote_address, app=app, default_limits=["200 per hour"])
 
     #Blueprints
     app.register_blueprint(health_bp)
