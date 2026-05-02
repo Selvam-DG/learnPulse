@@ -1,13 +1,17 @@
-from pydantic import BaseModel, Field, EmailStr, field_validator
-from typing import Literal, List, Optional
+from datetime import datetime
+from typing import List, Literal, Optional
 
-level= Literal["basics", "intermediate","advanced"]
+from pydantic import BaseModel, EmailStr, Field, field_validator
+
+level = Literal["basics", "intermediate", "advanced"]
+
 
 class TopicOut(BaseModel):
-    name:str
-    slug:str
-    levels:List[level] = ["basics", "intermediate", "advanced"]
+    name: str
+    slug: str
+    levels: List[level] = ["basics", "intermediate", "advanced"]
     order: int
+
 
 class LessonBase(BaseModel):
     topic_slug: str = Field(..., examples=["python", "cpp"])
@@ -27,8 +31,15 @@ class LessonBase(BaseModel):
             raise ValueError("slug must not contain spaces")
         return v
 
-class LessonCreate(LessonBase): ...
-class LessonOut(LessonBase): ...
+
+class LessonCreate(LessonBase):
+    pass
+
+
+class LessonOut(LessonBase):
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+
 
 class FeedbackIn(BaseModel):
     name: Optional[str] = ""

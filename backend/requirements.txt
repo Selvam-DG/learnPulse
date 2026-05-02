@@ -14,3 +14,8 @@ pydantic==2.8.2
 pydantic-settings==2.4.0
 python-dotenv==1.1.1
 Werkzeug==3.1.3
+gunicorn
+pytest 
+ruff
+PyJWT 
+email-validator
