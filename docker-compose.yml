@@ -1,0 +1,43 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: learnpulse-backend
+    env_file:
+      - ./.env
+    environment:
+      FLASK_ENV: ${FLASK_ENV:-production}
+      PORT: ${PORT:-5180}
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+      GUNICORN_TIMEOUT: ${GUNICORN_TIMEOUT:-120}
+      SECRET_KEY: ${SECRET_KEY}
+      MONGODB_URI: ${MONGODB_URI}
+      MONGODB_DB: ${MONGODB_DB:-learnpulse}
+      CORS_ORIGINS: ${CORS_ORIGINS}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_BEARER_TOKEN: ${ADMIN_BEARER_TOKEN}
+      JWT_ACCESS_MINUTES: ${JWT_ACCESS_MINUTES:-15}
+      JWT_REFRESH_DAYS: ${JWT_REFRESH_DAYS:-7}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-465}
+      SMTP_FROM: ${SMTP_FROM:-}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+    expose:
+      - "5180"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URI: ""
+    container_name: learnpulse-frontend
+    depends_on:
+      - backend
+    ports:
+      - "8082:80"
+    restart: unless-stopped
