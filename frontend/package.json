@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "flow": "npm run lint && npm run build",
+    "check": "npm run format:check && npm run lint && npm run build"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
@@ -29,6 +33,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
     "postcss": "^8.5.6",
+    "prettier": "^3.8.3",
     "tailwindcss": "^3.4.17",
     "vite": "^7.1.2"
   }
