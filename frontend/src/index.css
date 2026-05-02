@@ -7,10 +7,16 @@ code[class*="language-"], pre[class*="language-"] {
     font-size : 0.9rem;
 } */
 
-html, body, #root{height:100%; }
-body{
-    @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+html,
+body,
+#root {
+  height: 100%;
 }
-*{
-    transition : background-color .2s linear, color .2s linear; 
+body {
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100;
+}
+* {
+  transition:
+    background-color 0.2s linear,
+    color 0.2s linear;
 }
