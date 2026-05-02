@@ -205,3 +205,30 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# env files
+.env
+.env.dev
+.env.prod
+backend/.env
+backend/.env.dev
+backend/.env.prod
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# dependencies/build
+node_modules
+frontend/node_modules
+frontend/dist
+frontend/.vite
+backend/__pycache__
+backend/app/__pycache__
+backend/app/routes/__pycache__
+backend/app/utils/__pycache__
+*.pyc
+
+# tooling
+.pytest_cache
+.ruff_cache
+.DS_Store
