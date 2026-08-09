@@ -8,6 +8,8 @@ from .routes.feedback import bp as feedback_bp
 from .routes.health import bp as health_bp
 from .routes.lessons import bp as lessons_bp
 from .routes.topics import bp as topics_bp
+from .routes.interview import bp as interview_bp
+from .routes.admin_interview import bp as admin_interview_bp
 
 
 def create_app():
@@ -22,6 +24,8 @@ def create_app():
     app.register_blueprint(topics_bp)
     app.register_blueprint(lessons_bp)
     app.register_blueprint(feedback_bp)
+    app.register_blueprint(interview_bp)
+    app.register_blueprint(admin_interview_bp)
 
     @app.errorhandler(400)
     @app.errorhandler(401)

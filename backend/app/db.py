@@ -36,3 +36,49 @@ def ensure_indexes():
     db.feedback.create_index(
         [("topic", TEXT), ("message", TEXT)], name="feedback_text_idx"
     )
+    
+    db.interview_questions.create_index(
+        [("slug", ASCENDING)],
+        unique=True,
+        name="interview_questions_slug_uq",
+    )
+
+    db.interview_questions.create_index(
+        [
+            ("visibility", ASCENDING),
+            ("topic_slug", ASCENDING),
+            ("level", ASCENDING),
+            ("order", ASCENDING),
+        ],
+        name="interview_questions_topic_level_idx",
+    )
+
+    db.interview_questions.create_index(
+        [
+            ("visibility", ASCENDING),
+            ("section", ASCENDING),
+            ("order", ASCENDING),
+        ],
+        name="interview_questions_section_idx",
+    )
+
+    db.interview_questions.create_index(
+        [
+            ("visibility", ASCENDING),
+            ("project_slug", ASCENDING),
+            ("order", ASCENDING),
+        ],
+        name="interview_questions_project_idx",
+    )
+
+    db.interview_questions.create_index(
+        [
+            ("title", TEXT),
+            ("question", TEXT),
+            ("summary", TEXT),
+            ("content_markdown", TEXT),
+            ("tags", TEXT),
+        ],
+        name="interview_questions_text_idx",
+        default_language="english",
+    )
